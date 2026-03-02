@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}SSRF Labs - Home{% endblock %}
+
+{% block content %}
+<section class="max-w-4xl mx-auto px-6 py-24 text-center">
+
+    <h1 class="text-5xl font-extrabold tracking-tight text-white mb-4">
+        Server-Side Request Forgery
+    </h1>
+    <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-16">
+        A progressive training lab for understanding and exploiting SSRF vulnerabilities.
+        Choose a difficulty level below to begin.
+    </p>
+
+    <div class="grid gap-6 sm:grid-cols-3">
+
+        <!-- Level 1 -->
+        <a href="/level/1"
+           class="card-glow group block rounded-xl border border-gray-800 bg-gray-900/60
+                  p-8 text-left transition hover:border-emerald-500/60">
+            <div class="mb-4 inline-block rounded-lg border border-emerald-500/40 px-3 py-1
+                        text-xs font-semibold uppercase tracking-wider text-emerald-400">
+                Easy
+            </div>
+            <h2 class="text-xl font-bold text-white mb-2">Level 1</h2>
+            <p class="text-sm text-gray-400">
+                No protection. The server fetches whatever URL you hand it.
+            </p>
+        </a>
+
+        <!-- Level 2 -->
+        <a href="/level/2"
+           class="card-glow group block rounded-xl border border-gray-800 bg-gray-900/60
+                  p-8 text-left transition hover:border-amber-500/60">
+            <div class="mb-4 inline-block rounded-lg border border-amber-500/40 px-3 py-1
+                        text-xs font-semibold uppercase tracking-wider text-amber-400">
+                Medium
+            </div>
+            <h2 class="text-xl font-bold text-white mb-2">Level 2</h2>
+            <p class="text-sm text-gray-400">
+                A keyword blacklist stands in your way. Find an encoding it missed.
+            </p>
+        </a>
+
+        <!-- Level 3 -->
+        <a href="/level/3"
+           class="card-glow group block rounded-xl border border-gray-800 bg-gray-900/60
+                  p-8 text-left transition hover:border-red-500/60">
+            <div class="mb-4 inline-block rounded-lg border border-red-500/40 px-3 py-1
+                        text-xs font-semibold uppercase tracking-wider text-red-400">
+                Hard
+            </div>
+            <h2 class="text-xl font-bold text-white mb-2">Level 3</h2>
+            <p class="text-sm text-gray-400">
+                Only a trusted domain is whitelisted. Abuse URL parser quirks to escape.
+            </p>
+        </a>
+
+    </div>
+</section>
+{% endblock %}

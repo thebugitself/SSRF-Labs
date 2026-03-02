@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block title %}SSRF Labs - Level {{ level }}{% endblock %}
+
+{% block content %}
+<section class="max-w-3xl mx-auto px-6 py-16">
+
+    <!-- Header -->
+    <div class="mb-10">
+        {% if level == 1 %}
+            {% set color = "emerald" %}
+        {% elif level == 2 %}
+            {% set color = "amber" %}
+        {% else %}
+            {% set color = "red" %}
+        {% endif %}
+
+        <span class="inline-block rounded-lg border border-{{ color }}-500/40 px-3 py-1
+                     text-xs font-semibold uppercase tracking-wider text-{{ color }}-400 mb-3">
+            {{ difficulty }}
+        </span>
+        <h1 class="text-3xl font-bold text-white">
+            Level {{ level }} &mdash; {{ subtitle }}
+        </h1>
+        <p class="mt-3 text-gray-400 text-sm leading-relaxed">{{ description }}</p>
+    </div>
+
+    <!-- URL Form -->
+    <form method="post" class="mb-8">
+        <label for="url" class="block text-sm font-medium text-gray-300 mb-2">
+            Enter a URL to fetch:
+        </label>
+        <div class="flex gap-3">
+            <input
+                type="text"
+                id="url"
+                name="url"
+                value="{{ url }}"
+                placeholder="http://example.com"
+                autocomplete="off"
+                class="flex-1 rounded-lg border border-gray-700 bg-gray-900 px-4 py-3
+                       text-sm text-gray-200 placeholder-gray-600
+                       focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500
+                       outline-none transition"
+            />
+            <button
+                type="submit"
+                class="rounded-lg bg-indigo-600 px-6 py-3 text-sm font-semibold text-white
+                       hover:bg-indigo-500 transition active:scale-95"
+            >
+                Fetch
+            </button>
+        </div>
+    </form>
+
+    <!-- Hint -->
+    <details class="mb-8 rounded-lg border border-gray-800 bg-gray-900/50 p-4">
+        <summary class="cursor-pointer text-sm font-medium text-gray-400 select-none">
+            Show Hint
+        </summary>
+        <p class="mt-3 text-sm text-gray-500 leading-relaxed">{{ hint }}</p>
+    </details>
+
+    <!-- Error -->
+    {% if error %}
+    <div class="mb-6 rounded-lg border border-red-500/30 bg-red-500/10 p-4">
+        <p class="text-sm text-red-400">{{ error }}</p>
+    </div>
+    {% endif %}
+
+    <!-- Result -->
+    {% if result %}
+    <div class="rounded-lg border border-gray-800 bg-gray-900">
+        <div class="border-b border-gray-800 px-4 py-2 flex items-center justify-between">
+            <span class="text-xs font-semibold uppercase tracking-wider text-gray-500">
+                Response
+            </span>
+            <span class="text-xs text-gray-600">{{ url }}</span>
+        </div>
+        <div class="p-4 result-block text-sm text-gray-300 max-h-96 overflow-auto font-mono">{{ result }}</div>
+    </div>
+    {% endif %}
+
+    <!-- Back link -->
+    <div class="mt-10">
+        <a href="/" class="text-sm text-gray-500 hover:text-indigo-400 transition">
+            &larr; Back to home
+        </a>
+    </div>
+</section>
+{% endblock %}

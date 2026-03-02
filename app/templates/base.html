@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}SSRF Labs{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+        };
+    </script>
+    <style>
+        body {
+            font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+        }
+
+        /* scrollbar */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #1e1e2e; }
+        ::-webkit-scrollbar-thumb { background: #45475a; border-radius: 3px; }
+
+        /* glow on hover */
+        .card-glow:hover {
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.25);
+        }
+
+        /* result block */
+        .result-block {
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body class="bg-gray-950 text-gray-200 min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="border-b border-gray-800 bg-gray-950/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="/" class="text-xl font-bold tracking-tight text-white">
+                <span class="text-indigo-400">&gt;_</span> SSRF Labs
+            </a>
+            <div class="flex gap-3 text-sm">
+                <a href="/level/1" class="text-gray-400 hover:text-indigo-400 transition">L1</a>
+                <a href="/level/2" class="text-gray-400 hover:text-indigo-400 transition">L2</a>
+                <a href="/level/3" class="text-gray-400 hover:text-indigo-400 transition">L3</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="flex-1">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800 text-center py-4 text-xs text-gray-600">
+        SSRF Labs &mdash; Built for educational purposes only.
+    </footer>
+
+</body>
+</html>
