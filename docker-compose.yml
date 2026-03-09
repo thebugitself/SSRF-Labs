@@ -2,7 +2,7 @@
 #  SSRF Labs  -  Docker Compose
 # ──────────────────────────────────────────────
 #  Single container that runs:
-#    - web-app   on 0.0.0.0:8000  (exposed to host)
+#    - web-app   on 0.0.0.0:8001  (exposed to host)
 #    - internal  on 127.0.0.1:80  (only reachable via SSRF)
 # ──────────────────────────────────────────────
 
@@ -14,5 +14,5 @@ services:
       dockerfile: Dockerfile
     container_name: ssrf-web-app
     ports:
-      - "8000:8000"
+      - "8001:8000"
     restart: unless-stopped
